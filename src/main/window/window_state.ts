@@ -43,12 +43,12 @@ export function isWindowState(value: unknown): value is WindowState {
 	return true;
 }
 
-const DEFAULT_WIDTH = 580;
-const DEFAULT_HEIGHT = 337;
+export const DEFAULT_WINDOW_WIDTH = 1740;
+export const DEFAULT_WINDOW_HEIGHT = 1011;
 
 const DEFAULT_STATE: WindowState = {
-	width: DEFAULT_WIDTH,
-	height: DEFAULT_HEIGHT,
+	width: DEFAULT_WINDOW_WIDTH,
+	height: DEFAULT_WINDOW_HEIGHT,
 	x: undefined,
 	y: undefined,
 	isMaximized: false,
@@ -99,9 +99,11 @@ export function validateAndLoadState(
 		return { ...DEFAULT_STATE };
 	}
 
-	const { width, height, isMaximized, x, y } = parsed;
+	const { isMaximized, x, y } = parsed;
+	const width = Math.max(parsed.width, DEFAULT_WINDOW_WIDTH);
+	const height = Math.max(parsed.height, DEFAULT_WINDOW_HEIGHT);
 
-	if (width <= 0 || height <= 0) {
+	if (parsed.width <= 0 || parsed.height <= 0) {
 		return { ...DEFAULT_STATE };
 	}
 

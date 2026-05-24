@@ -85,8 +85,8 @@ describe("isWithinDisplayBounds", () => {
 describe("validateAndLoadState", () => {
 	const displays = [makeDisplay(0, 0, 1920, 1080)];
 	const defaultState = {
-		width: 580,
-		height: 337,
+		width: 1740,
+		height: 1011,
 		x: undefined,
 		y: undefined,
 		isMaximized: false,
@@ -104,6 +104,24 @@ describe("validateAndLoadState", () => {
 
 	it("returns saved state when valid and within display bounds", () => {
 		const saved = JSON.stringify({
+			width: 1800,
+			height: 1000,
+			x: 100,
+			y: 100,
+			isMaximized: false,
+		});
+		const result = validateAndLoadState(saved, displays);
+		expect(result).toEqual({
+			width: 1800,
+			height: 1000,
+			x: 100,
+			y: 100,
+			isMaximized: false,
+		});
+	});
+
+	it("bumps saved dimensions below the new minimum up to defaults", () => {
+		const saved = JSON.stringify({
 			width: 800,
 			height: 600,
 			x: 100,
@@ -112,8 +130,8 @@ describe("validateAndLoadState", () => {
 		});
 		const result = validateAndLoadState(saved, displays);
 		expect(result).toEqual({
-			width: 800,
-			height: 600,
+			width: 1740,
+			height: 1011,
 			x: 100,
 			y: 100,
 			isMaximized: false,

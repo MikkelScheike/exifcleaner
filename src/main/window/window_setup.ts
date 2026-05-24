@@ -2,10 +2,12 @@ import { BrowserWindow, app, nativeTheme } from "electron";
 import path from "path";
 import { isMac, isWindows } from "../../common";
 import { iconPath } from "../../infrastructure";
-import { loadWindowState, setupWindowStatePersistence } from "./window_state";
-
-const DEFAULT_WINDOW_WIDTH = 580;
-const DEFAULT_WINDOW_HEIGHT = 312;
+import {
+	DEFAULT_WINDOW_HEIGHT,
+	DEFAULT_WINDOW_WIDTH,
+	loadWindowState,
+	setupWindowStatePersistence,
+} from "./window_state";
 
 // Match CSS --color-bg tokens from the React ThemeProvider
 const LIGHT_BACKGROUND_COLOR = "#F5F6F8";
@@ -67,7 +69,7 @@ export function createMainWindow(): BrowserWindow {
 			? { x: savedState.x, y: savedState.y }
 			: {}),
 		minWidth: DEFAULT_WINDOW_WIDTH,
-		minHeight: DEFAULT_WINDOW_HEIGHT + 25,
+		minHeight: DEFAULT_WINDOW_HEIGHT,
 		webPreferences: {
 			nodeIntegration: false,
 			contextIsolation: true,

@@ -180,7 +180,7 @@ New translations and corrections to existing translations are welcome! See the [
 
 ## Development
 
-Built with [Electron 35](https://electronjs.org), [React 19](https://react.dev), and [TypeScript 5.7](https://www.typescriptlang.org/) (strict mode). Uses a hand-rolled [ExifTool](https://exiftool.org/) wrapper implementing the `-stay_open` protocol for fast batch processing.
+Built with [Electron 42](https://electronjs.org), [React 19](https://react.dev), and [TypeScript 5.7](https://www.typescriptlang.org/) (strict mode). Develop with Node.js 26.2.0; the packaged app runs on Electron’s bundled Node.js. Uses a hand-rolled [ExifTool](https://exiftool.org/) wrapper implementing the `-stay_open` protocol for fast batch processing.
 
 ### Run the app in dev mode
 

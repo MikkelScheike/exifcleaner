@@ -4,7 +4,8 @@ Cross-platform Electron desktop app to strip EXIF/metadata from images, videos, 
 
 ## Tech Stack
 
-- **Runtime**: Electron 35 (Chromium + Node 22) with contextIsolation + sandbox
+- **Runtime**: Electron 42 (Chromium + Node 24) with contextIsolation + sandbox
+- **Dev/CI Node**: 26.2.0 (see `engines` in package.json and `.nvmrc`)
 - **Language**: TypeScript 5.7 with `strict: true` + `verbatimModuleSyntax: true` (type-check only, electron-vite/esbuild compiles)
 - **Build**: electron-vite 5.x + Vite 7.x + esbuild (3 targets: main, preload, renderer)
 - **Packaging**: electron-builder 22.8 (produces .dmg, .AppImage, .deb, .rpm, .exe, portable)
@@ -214,12 +215,12 @@ Root config: `.prettierrc` (tabs), `.gitattributes` (`* text=auto eol=lf`), `ele
 
 | Package | Version | Purpose | Notes |
 | --- | --- | --- | --- |
-| `electron` | ^35.0 | App framework | contextIsolation + sandbox enabled |
+| `electron` | 42.2.0 | App framework | contextIsolation + sandbox enabled |
 | `electron-builder` | ^22.8 | Packaging/distribution | Works but outdated |
 | `electron-vite` | ^5.0.0 | Build system | Vite-based, replaces electron-webpack |
 | `vite` | ^7.3.1 | Module bundler/dev server | Powers electron-vite |
 | `typescript` | ~5.7.0 | Language compiler | `strict: true` enabled |
-| `@types/node` | ^22.0 | Node.js type defs | Matches Electron 35's Node 22 |
+| `@types/node` | ^25.9.1 | Node.js type defs | Closest published types for dev Node 26; Electron 42 bundles Node 24 |
 | `prettier` | ^3.0 | Code formatter | Trailing commas default to "all" |
 
 ## Code Conventions
